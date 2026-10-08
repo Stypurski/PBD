@@ -1,0 +1,106 @@
+--TABELA 
+
+CREATE TABLE Produtos (
+    Codigo INT PRIMARY KEY,
+    Nome VARCHAR(50),
+    Qtde INT,
+    Pr_Unit DECIMAL(10,2)
+);
+
+INSERT INTO Produtos (Codigo, Nome, Qtde, Pr_Unit) VALUES
+(1, 'Caneta', 15, 3.50),
+(2, 'Lápis', 10, 1.80),
+(3, 'Apontador', 15, 9.50),
+(4, 'Caneta', 20, 3.50),
+(5, 'Borracha', 10, 0.90),
+(6, 'Borracha', 12, 0.50),
+(7, 'Lápis', 5, 2.20),
+(8, 'Caneta', 8, 4.00),
+(9, 'Lápis', 15, 2.00);
+
+
+CREATE TABLE Funcionarios (
+    Matricula INT PRIMARY KEY,
+    Nome VARCHAR(50),
+    Setor VARCHAR(10),
+    Dpto INT,
+    Salario DECIMAL(10,2)
+);
+
+INSERT INTO Funcionarios (Matricula, Nome, Setor, Dpto, Salario) VALUES
+(1111, 'Maria', 'A4', 11, 1524.00),
+(1212, 'Carlos', 'A4', 11, 1050.00),
+(1378, 'Sueli', 'B1', 11, 980.00),
+(2411, 'Renata', 'C9', 22, 1610.00),
+(2609, 'Carlos', 'A4', 22, 895.50),
+(3001, 'Thiago', 'B1', 11, 980.00),
+(3331, 'Maria', 'B1', 22, 1050.00),
+(3801, 'Maria', 'A4', 33, 1622.55),
+(4178, 'Renata', 'B1', 33, 798.20),
+(5271, 'Paulo', 'C9', 11, 946.68),
+(5559, 'Renata', 'D2', 44, 1204.26),
+(6108, 'Paulo', 'B1', 22, 1220.90),
+(7171, 'Sueli', 'C9', 33, 1500.50),
+(8010, 'Carlos', 'D2', 22, 1489.90),
+(9999, 'Maria', 'A4', 44, 1082.33);
+
+
+--ATIVIDADES
+
+
+SELECT *
+FROM Produtos 
+WHERE Qtde > 10;
+SELECT '';
+
+
+SELECT * 
+FROM Funcionarios 
+WHERE Salario > 1000.00;
+SELECT '';
+
+
+SELECT * 
+FROM Funcionarios 
+WHERE UPPER(Nome) = 'MARIA' 
+  AND Salario > 1200.00;
+SELECT '';
+
+
+SELECT * 
+FROM Produtos 
+WHERE Pr_Unit >= 2.00;
+SELECT '';
+
+
+SELECT * 
+FROM Produtos 
+WHERE UPPER(Nome) IN ('LÁPIS', 'LAPIS', 'CANETA');
+SELECT '';
+
+
+SELECT * 
+FROM Funcionarios 
+WHERE Dpto < 33;
+SELECT '';
+
+
+SELECT * 
+FROM Produtos 
+WHERE Qtde > 20 
+   OR Pr_Unit > 2.00;
+SELECT '';
+
+
+SELECT * 
+FROM Funcionarios 
+WHERE Matricula > 2000 
+  AND Setor IN ('A4', 'B1');
+SELECT '';
+
+
+SELECT * 
+FROM Funcionarios 
+WHERE Dpto > 22 
+  AND Matricula > 5000;
+SELECT '';
