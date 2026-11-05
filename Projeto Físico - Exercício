@@ -1,0 +1,61 @@
+CREATE DATABASE LocaFacil;
+
+CREATE TABLE Cliente(
+  codigoCli INT Not Null,
+  nome VARCHAR(50) Not Null,
+  cnh VARCHAR(11) Not NUll,
+  endereco VARCHAR(100) Not NUll,
+  PRIMARY KEY (codigoCli)
+);
+
+CREATE TABLE Telefone(
+  telefone_PK INT Not Null,
+  telefone VARCHAR(15) Not Null,
+  codigoCli INT Not NULL,
+  PRIMARY KEY (telefone_PK),
+  
+  FOREIGN KEY(codigoCli) REFERENCES Cliente(codigoCli)
+);
+
+CREATE TABLE Aluga(
+  codigoAlu INT Not Null,
+  dataInicial DATE,
+  dataFinal DATE,
+  codigoCar INT Not NULL,
+  codigoCli INT Not NULL,
+  PRIMARY KEY (codigoAlu),
+  
+  FOREIGN KEY(codigoCli) REFERENCES Cliente(CodigoCli)
+  );
+  
+  CREATE TABLE Carro(
+    codigoCar INT Not Null,
+    placa VARCHAR(8) Not Null,
+    cor VARCHAR(15) Not Null,
+    modelo VARCHAR(20) Not Null,
+    ano INT Not Null,
+    diaria DOUBLE Not NUll,
+    codigoAlu INT Not Null,
+    PRIMARY KEY(codigoCar),
+    
+    FOREIGN KEY(codigoAlu) REFERENCES Aluga(codigoAlu)
+    );
+    
+  CREATE TABLE Esportivo(
+    velocidade DOUBLE Not Null,
+    codigoCar INT Not Null,
+    PRIMARY KEY(codigoCar),
+    
+    FOREIGN KEY(codigoCar) REFERENCES Carro(codigoCar)
+  );
+  
+  CREATE TABLE Sedan(
+    passageiros INT Not Null,
+    codigoCar INT Not Null,
+    PRIMARY KEY(codigoCar),
+    
+    FOREIGN KEY(codigoCar) REFERENCES Carro(codigoCar)
+  );
+  
+   
+ 
